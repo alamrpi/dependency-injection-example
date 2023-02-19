@@ -1,0 +1,35 @@
+﻿@using DI_Example.Services.Abstract;
+@model int
+@inject IScopedService _scoped
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Scoped</h1>
+
+    <h3>Lifetime</h3>
+    <p>
+        Created once per request.
+    </p>
+
+    <h3>Cases</h3>
+    <p>
+        <ul>
+            <li> - Persisting state per request</li>
+        </ul>
+    </p>
+    <h4>
+        First Call @Model
+    </h4>
+    <h3>Second Call @_scoped.GetRandomNumber()</h3>
+
+    <p>
+      Both numbers are also the same, but the difference is
+        that with each refresh of the page, we get a different
+        number. The reason for this is that Scoped is initialized
+        for each Request (rendering the page and the partial is
+        the same request)
+    </p>
+</div>

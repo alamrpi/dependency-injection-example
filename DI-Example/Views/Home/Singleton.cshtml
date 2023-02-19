@@ -1,0 +1,37 @@
+﻿@using DI_Example.Services.Abstract;
+@model int
+@inject ISingletonService singleton
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Singleton</h1>
+
+    <h3> Lifetime</h3>
+    <p>
+        Created the first time they are requested (or when
+        ConfigureServices is run if you specify an instance
+        there) and then every subsequent request will use
+        the same instance.
+    </p>
+
+    <h3>Cases</h3>
+    <p>
+       <ul>
+            <li> - Caching Services </li>
+            <li> - Global Configuration</li>
+       </ul>
+    </p>
+    <h4>
+        First Call @Model
+    </h4>
+    <h3>Second Call @singleton.GetRandomNumber()</h3>
+
+    <p>
+         As we can see, both numbers are exactly the same even
+        though we call the function with 2 different places. The
+        reason for this is that the Singleton is created only once
+        and lasts until the application stops.
+    </p>
+</div>
